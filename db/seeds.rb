@@ -19,7 +19,7 @@
     Tag.create(name: tag_name)
   end
    
-  url = "http://www.defenders.org/sites/default/files/styles/large/public/dolphin-kristian-sekulic-isp.jpg"
+  url = "https://wallpapercave.com/wp/wp2269440.jpg"
    
   Post.create(
     image_url: url,

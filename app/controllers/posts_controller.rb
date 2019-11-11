@@ -27,9 +27,15 @@ class PostsController < ApplicationController
     end
 
     def update
+        if @post.update(post_params)
+            redirect_to @post
+        else
+            redirect_to edit_post_path(@post)
     end
 
     def destroy
+        @post.delete
+        redirect_to new_post_path
     end
 
     private

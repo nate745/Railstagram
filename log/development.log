@@ -246,3 +246,584 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 4410)
 
 
+Started GET "/posts" for ::1 at 2019-11-11 15:16:47 -0600
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 3650)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.0ms | Allocations: 8544)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:16:51 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 989)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1527)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>All Posts</h1>
+<% @posts.each do |post| %>
+<%= post %>
+):
+1:    <h1>All Posts</h1>
+2:    <% @posts.each do |post| %>
+3:    <%= post %>
+  
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+app/views/posts/index.html.erb:5: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts" for ::1 at 2019-11-11 15:17:06 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 28.9ms | Allocations: 4784)
+Completed 200 OK in 120ms (Views: 110.7ms | ActiveRecord: 5.6ms | Allocations: 13296)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:17:29 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 702)
+Completed 200 OK in 38ms (Views: 33.2ms | ActiveRecord: 0.3ms | Allocations: 5775)
+
+
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user2@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user3@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user3"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (1.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Nature"], ["created_at", "2019-11-11 21:19:44.992022"], ["updated_at", "2019-11-11 21:19:44.992022"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "NYC"], ["created_at", "2019-11-11 21:19:45.024612"], ["updated_at", "2019-11-11 21:19:45.024612"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Art"], ["created_at", "2019-11-11 21:19:45.029808"], ["updated_at", "2019-11-11 21:19:45.029808"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Humor"], ["created_at", "2019-11-11 21:19:45.035639"], ["updated_at", "2019-11-11 21:19:45.035639"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("image_url", "title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image_url", "https://defenders.org/modules/contrib/copyprevention/transparent.gif"], ["title", "Saw a dolphin!"], ["user_id", 1], ["created_at", "2019-11-11 21:19:45.073606"], ["updated_at", "2019-11-11 21:19:45.073606"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/posts" for ::1 at 2019-11-11 15:20:31 -0600
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.9ms | Allocations: 5239)
+Completed 200 OK in 142ms (Views: 110.0ms | ActiveRecord: 2.7ms | Allocations: 17579)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:20:39 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 596)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.2ms | Allocations: 4745)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:21:14 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 721)
+Completed 200 OK in 54ms (Views: 49.3ms | ActiveRecord: 0.8ms | Allocations: 5797)
+
+
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user2@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user2"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user3@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "user3"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (1.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Nature"], ["created_at", "2019-11-11 21:23:27.440630"], ["updated_at", "2019-11-11 21:23:27.440630"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "NYC"], ["created_at", "2019-11-11 21:23:27.448079"], ["updated_at", "2019-11-11 21:23:27.448079"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Art"], ["created_at", "2019-11-11 21:23:27.453615"], ["updated_at", "2019-11-11 21:23:27.453615"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTag Create (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Humor"], ["created_at", "2019-11-11 21:23:27.458501"], ["updated_at", "2019-11-11 21:23:27.458501"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("image_url", "title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image_url", "https://wallpapercave.com/wp/wp2269440.jpg"], ["title", "Saw a dolphin!"], ["user_id", 1], ["created_at", "2019-11-11 21:23:27.490856"], ["updated_at", "2019-11-11 21:23:27.490856"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/posts" for ::1 at 2019-11-11 15:23:43 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 25.8ms | Allocations: 4917)
+Completed 200 OK in 127ms (Views: 103.5ms | ActiveRecord: 1.8ms | Allocations: 17171)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:26:10 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 777)
+Completed 200 OK in 33ms (Views: 30.1ms | ActiveRecord: 0.3ms | Allocations: 5855)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:28:36 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 64.4ms | Allocations: 5739)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.0ms | Allocations: 7032)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:28:47 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1016)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1556)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>All Posts</h1>
+<% @posts.each do |post| %><br>
+<%= image_tag post.image_url width="16" height="16" %>
+<%end%>
+):
+1:    <h1>All Posts</h1>
+2:    <% @posts.each do |post| %><br>
+3:    <%= image_tag post.image_url width="16" height="16" %>
+4:    <%end%>
+  
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting ')'
+Started GET "/posts" for ::1 at 2019-11-11 15:31:09 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1024)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2333)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>All Posts</h1>
+<% @posts.each do |post| %><br>
+<%= cl_image_tag(post.image_url, :transformation => {width="16" height="16"}) %>
+<%end%>
+):
+1:    <h1>All Posts</h1>
+2:    <% @posts.each do |post| %><br>
+3:    <%= cl_image_tag(post.image_url, :transformation => {width="16" height="16"}) %>
+4:    <%end%>
+  
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:3: syntax error, unexpected tIDENTIFIER, expecting =>
+app/views/posts/index.html.erb:3: syntax error, unexpected '}', expecting ')'
+app/views/posts/index.html.erb:4: syntax error, unexpected end, expecting ')'
+app/views/posts/index.html.erb:6: syntax error, unexpected end, expecting ')'
+Started GET "/posts" for ::1 at 2019-11-11 15:33:18 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 824)
+Completed 200 OK in 27ms (Views: 24.7ms | ActiveRecord: 0.8ms | Allocations: 5922)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:33:34 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 812)
+Completed 200 OK in 29ms (Views: 26.6ms | ActiveRecord: 0.7ms | Allocations: 5885)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:33:48 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 804)
+Completed 200 OK in 33ms (Views: 29.7ms | ActiveRecord: 0.2ms | Allocations: 5872)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:33:50 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 680)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.1ms | Allocations: 4819)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:34:20 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 804)
+Completed 200 OK in 34ms (Views: 29.9ms | ActiveRecord: 0.6ms | Allocations: 5889)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:34:42 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.0ms | Allocations: 804)
+Completed 200 OK in 46ms (Views: 41.9ms | ActiveRecord: 0.2ms | Allocations: 5875)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 15:35:04 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 812)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 0.3ms | Allocations: 5885)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:01:58 -0600
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 5006)
+Completed 200 OK in 119ms (Views: 91.3ms | ActiveRecord: 2.2ms | Allocations: 16986)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:03:05 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 817)
+Completed 200 OK in 44ms (Views: 40.6ms | ActiveRecord: 1.3ms | Allocations: 5899)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:04:00 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 814)
+Completed 200 OK in 46ms (Views: 43.0ms | ActiveRecord: 0.2ms | Allocations: 5892)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:04:47 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 819)
+Completed 200 OK in 36ms (Views: 32.7ms | ActiveRecord: 0.3ms | Allocations: 5905)
+
+
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for ::1 at 2019-11-11 16:05:45 -0600
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 5006)
+Completed 200 OK in 131ms (Views: 94.4ms | ActiveRecord: 2.1ms | Allocations: 17652)
+
+
+Started GET "/posts/new" for ::1 at 2019-11-11 16:13:56 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 22.5ms | Allocations: 2546)
+  Rendered posts/new.html.erb within layouts/application (Duration: 25.4ms | Allocations: 2858)
+Completed 200 OK in 56ms (Views: 44.9ms | ActiveRecord: 0.0ms | Allocations: 13452)
+
+
+Started POST "/posts" for ::1 at 2019-11-11 16:16:07 -0600
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"Q9obtJ6vt5F9qwVJSeZbQD/H40w2CsgH0KJZVJEjKW8Hhl+DPaERKGcgB4ROZ6E64eQdWwf0COADcaReD6h5Zw==", "post"=>{"title"=>"Grizzly Bear", "image_url"=>"https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGrizzly_bear&psig=AOvVaw3pnC6oRr5cv5ywNV6hD09_&ust=1573596942682000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPir782X4-UCFQAAAAAdAAAAABAD"}, "commit"=>"Create Post"}
+Redirected to http://localhost:3000/posts/new
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms | Allocations: 3946)
+
+
+Started GET "/posts/new" for ::1 at 2019-11-11 16:16:07 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.3ms | Allocations: 733)
+  Rendered posts/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 797)
+Completed 200 OK in 21ms (Views: 20.7ms | ActiveRecord: 0.0ms | Allocations: 4948)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:16:16 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 842)
+Completed 200 OK in 20ms (Views: 15.3ms | ActiveRecord: 1.4ms | Allocations: 5153)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:18:54 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 680)
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.2ms | Allocations: 4816)
+
+
+Started GET "/posts" for ::1 at 2019-11-11 16:21:34 -0600
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 814)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.2ms | Allocations: 5892)
+
+
+Started GET "/posts/new" for ::1 at 2019-11-11 16:21:39 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 18.1ms | Allocations: 4357)
+  Rendered posts/new.html.erb within layouts/application (Duration: 22.4ms | Allocations: 4657)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms | Allocations: 5344)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts"}, missing required keys: [:id]):
+    3: <%= f.text_field :title%>
+    4: <%= f.label :image_url%>
+    5: <%= f.text_field :image_url%>
+    6: <%= button_to "Create Post", post_path, method: :get %>
+    7: <%end%>
+  
+app/views/posts/_form.html.erb:6
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:27:59 -0600
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.9ms | Allocations: 944)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1244)
+Completed 200 OK in 29ms (Views: 27.2ms | ActiveRecord: 0.0ms | Allocations: 6379)
+
+
+Started GET "/posts/new" for ::1 at 2019-11-11 16:31:16 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.6ms | Allocations: 1228)
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1528)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2816)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for(@post) do |f|%>
+<%= f.label :title%>
+<%= f.text_field :title%>
+<%= f.label :image_url%>
+<%= f.text_field :image_url%>
+<%= f.collection_select(:tag_id, Tag.all, :id, :name)
+<%= f.submit%>
+<%end%>
+
+
+
+):
+1:    <%= form_for(@post) do |f|%>
+2:    <%= f.label :title%>
+3:    <%= f.text_field :title%>
+4:    <%= f.label :image_url%>
+5:    <%= f.text_field :image_url%>
+6:    <%= f.collection_select(:tag_id, Tag.all, :id, :name)
+7:    <%= f.submit%>
+8:    <%end%>
+  
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:7: syntax error, unexpected '<', expecting ')'
+app/views/posts/_form.html.erb:8: syntax error, unexpected end, expecting ')'
+app/views/posts/_form.html.erb:13: syntax error, unexpected end, expecting ')'
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:31:40 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 46.3ms | Allocations: 7136)
+  Rendered posts/new.html.erb within layouts/application (Duration: 47.7ms | Allocations: 7437)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms | Allocations: 8726)
+
+
+  
+ActionView::Template::Error (undefined method `tag_id' for #<Post:0x00007fef83a520b0>
+Did you mean?  tag_ids
+               tag_ids=):
+    3: <%= f.text_field :title%>
+    4: <%= f.label :image_url%>
+    5: <%= f.text_field :image_url%>
+    6: <%= f.collection_select(:tag_id, Tag.all, :id, :name)%>
+    7: <%= f.submit%>
+    8: <%end%>
+  
+app/views/posts/_form.html.erb:6
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:32:21 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 15.4ms | Allocations: 3187)
+  Rendered posts/new.html.erb within layouts/application (Duration: 16.4ms | Allocations: 3253)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 3798)
+
+
+  
+ActionView::Template::Error (undefined method `tag_id' for #<Post:0x00007fef839f9640>
+Did you mean?  tag_ids
+               tag_ids=):
+    3: <%= f.text_field :title%>
+    4: <%= f.label :image_url%>
+    5: <%= f.text_field :image_url%>
+    6: <%= f.collection_select(:tag_id, Tag.all, :id, :name)%>
+    7: <%= f.submit%>
+    8: <%end%>
+  
+app/views/posts/_form.html.erb:6
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:33:29 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 6.6ms | Allocations: 3391)
+  Rendered posts/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 3692)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 4981)
+
+
+  
+ActionView::Template::Error (undefined method `tag_id' for #<Post:0x00007fef8027c0a0>
+Did you mean?  tag_ids
+               tag_ids=):
+    3: <%= f.text_field :title%>
+    4: <%= f.label :image_url%>
+    5: <%= f.text_field :image_url%>
+    6: # <%= f.collection_select(:tag_id, Tag.all, :id, :name)%>
+    7: <%= f.submit%>
+    8: <%end%>
+  
+app/views/posts/_form.html.erb:6
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:33:57 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 16.4ms | Allocations: 3390)
+  Rendered posts/new.html.erb within layouts/application (Duration: 18.2ms | Allocations: 3691)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms | Allocations: 4986)
+
+
+  
+ActionView::Template::Error (undefined method `tag_id' for #<Post:0x00007fef814d7c68>
+Did you mean?  tag_ids
+               tag_ids=):
+    3: <%= f.text_field :title%>
+    4: <%= f.label :image_url%>
+    5: <%= f.text_field :image_url%>
+    6: <!-- <%= f.collection_select(:tag_id, Tag.all, :id, :name)%> -->
+    7: <%= f.submit%>
+    8: <%end%>
+  
+app/views/posts/_form.html.erb:6
+app/views/posts/_form.html.erb:1
+app/views/posts/new.html.erb:2
+Started GET "/posts/new" for ::1 at 2019-11-11 16:34:22 -0600
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 4.4ms | Allocations: 925)
+  Rendered posts/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1223)
+Completed 200 OK in 52ms (Views: 49.2ms | ActiveRecord: 0.0ms | Allocations: 6313)
+
+
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Create (2.1ms)[0m  [1m[32mINSERT INTO "posts" ("image_url", "title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image_url", "sdjhfkjs"], ["title", "Cool"], ["user_id", 1], ["created_at", "2019-11-11 22:41:42.739749"], ["updated_at", "2019-11-11 22:41:42.739749"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
