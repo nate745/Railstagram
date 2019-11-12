@@ -3,6 +3,7 @@
 <%= f.text_field :title%>
 <%= f.label :image_url%>
 <%= f.text_field :image_url%>
+<%= f.collection_select(:tag_ids, Tag.all, :id, :name)%>
 <%= f.submit%>
 <%end%>
 

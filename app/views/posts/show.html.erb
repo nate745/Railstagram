@@ -1,3 +1,5 @@
 <h1><%= @post.title%></h1>
-<h2><%= @post.tag.name%>
-<h2><%= link_to @post.tag.name, tag_path(@post.tag_id)
+<%= image_tag(@post.image_url, width:480, height:270)%><br>
+<% @post.tags.each do |tag|%>
+<%= link_to tag.name, tag_path(@post.tags.name)%>
+<%end%> 
