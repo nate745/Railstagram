@@ -9,15 +9,11 @@ class UsersController < ApplicationController
     def new 
     end 
     
-    def create 
-        @user = User.new(params_user)
-        if @user.valid?
-            @user.save
-            redirect_to @user
-        else
-            flash[:errors] = @user.errors.full_messages
-            redirect_to new_user_path
-        end 
+    def create
+        @user = User.create(user_params)
+        return redirect_to controller: 'users', action: 'new' unless @user.save
+        session[:user_id] = @user.id
+        redirect_to controller: 'welcome', action: 'home'
     end 
     
     def edit
@@ -42,7 +38,7 @@ class UsersController < ApplicationController
 
     private 
     
-    def params_user
+    def user_params
         params.require(:user).permit(:email, :username, :password, :password_confirmation)
     end 
     

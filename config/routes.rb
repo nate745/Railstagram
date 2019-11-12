@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :post_tags
-  resources :tags
-  resources :posts
-  resources :users
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
+  resources :users, only: [:new, :create]
+
+  root 'welcome#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

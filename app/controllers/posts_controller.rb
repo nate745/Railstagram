@@ -41,12 +41,12 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:image_url, :title, :user_id)
+        params.require(:post).permit(:image_url, :title, :user_id, :tag_ids)
     end
 
     def find_post
         @post = Post.find(params[:id])
     end
 
-end
+
 end
