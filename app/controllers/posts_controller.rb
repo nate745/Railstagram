@@ -31,6 +31,7 @@ class PostsController < ApplicationController
             redirect_to @post
         else
             redirect_to edit_post_path(@post)
+        end
     end
 
     def destroy

@@ -20,9 +20,17 @@
   end
    
   url = "https://wallpapercave.com/wp/wp2269440.jpg"
+  url_two = "https://www.thehappycatsite.com/wp-content/uploads/2018/03/norwegian-forest-cat-header.jpg"
+
    
   Post.create(
     image_url: url,
-    title: "Saw a dolphin!",
+    title: "Polar Bear!",
     user_id: User.first.id
+  )
+
+  Post.create(
+    image_url: url_two,
+    title: "Cat!",
+    user_id: User.second.id
   )
