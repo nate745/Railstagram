@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authorize!, only: [:index, :show]
     before_action :find_user, only: [:show, :edit, :destroy, :update]
 
     
@@ -7,13 +8,20 @@ class UsersController < ApplicationController
     end 
 
     def new 
+        @user = User.new
     end 
     
     def create
-        @user = User.create(user_params)
-        return redirect_to controller: 'users', action: 'new' unless @user.save
-        session[:user_id] = @user.id
-        redirect_to controller: 'welcome', action: 'home'
+        user = User.create(user_params)
+        if user.valid?
+           user.save
+           session[:user_id] = user.id
+           redirect_to user_path(user)
+        else
+           flash[:errors] = user.errors.full_messages
+           redirect_to new_user_path
+        end 
+
     end 
     
     def edit
@@ -25,8 +33,8 @@ class UsersController < ApplicationController
     end 
 
     def update
-        if @user.update(params_user)
-            redirect_to users_path
+        if @user.update(user_params)
+            redirect_to user_path
         else
             flash[:errors] = @user.errors.full_messages
             redirect_to edit_user_path
@@ -34,7 +42,14 @@ class UsersController < ApplicationController
     end 
 
     def show 
-    end    
+        if id_matches_current_user?(params[:id])
+            @user = User.find_by(id: params[:id])
+            render :show
+        else
+            flash[:notice] = "Sorry, you are not authorized to view this page "
+            redirect_to user_path(session[:user_id])
+        end
+    end   
 
     private 
     
