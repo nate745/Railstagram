@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     end
 
     def show
-        @tag = Tag.find(params[:id])
+        redirect_to count_tag_path
     end
 
     # private

@@ -1,5 +1,5 @@
 <h1><%= @post.title%></h1>
-<%= image_tag(@post.image_url, width:480, height:270)%><br>
+<%= link_to image_tag(@post.image_url, width:480, height:270), @post%><br>
 <% @post.tags.each do |tag|%>
 <%= link_to tag.name, tag_path(@post.tags.name)%>
 
@@ -8,13 +8,17 @@
     <ul>
       <%= f.fields_for :comments do |comments_form| %>
         <li>
-          <%= comments_form.label :description %>
-          <%= comments_form.text_field :description %>
+          <%= comments_form.label :Comment %>
+          <%= comments_form.text_field :comment %>
           
-        <%= comments_form.submit "Save Post" %> 
+        <%= f.submit "Save comment" %> 
 
         </li>
       <% end %>
     </ul>
   <% end %>
 <%end%> 
+
+<% @comments.each do |comment| %>
+  <%= comment.description %>
+  <% end %>
