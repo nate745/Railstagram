@@ -1,4 +1,4 @@
-<h1>New Comment</h1>
+
 <% if flash[:errors] %>
 <% flash[:errors].each do |error| %>
     <p><%= error %></p>
@@ -8,5 +8,7 @@
 <%= form_with model: @comment do |f| %>
 	<%= f.label :description %><br />
 	<%= f.text_field :description %><br />
-	<%= f.submit %>
+    <%= f.submit %><br>
+    <%= button_to "Profile Page", user_path(@user), method: :get %> 
+
 <% end %>

@@ -15,13 +15,13 @@ class PostsController < ApplicationController
             @post.save
             redirect_to @post
         else
-            p @post.errors.full_messages
 
             redirect_to new_post_path
         end
     end
 
     def show
+        @comments = @post.comments
     end
 
     def edit
@@ -43,7 +43,12 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:image_url, :title, :user_id, :tag_ids)
+        params.require(:post).permit(:image_url, :title, :user_id, :tag_ids, comments_attributes: [
+            :description,
+            :user_id,
+            :post_id
+        ]
+        )
     end
 
     def find_post

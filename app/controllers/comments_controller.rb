@@ -1,15 +1,25 @@
 class CommentsController < ApplicationController
 
+    include PostsHelper
+
+    def index
+        @comments = Comment.all
+    end
+
+    
     def new
+        @comment = Comment.new
     end 
 
     def create
-        @comment = @post.comments.build(comment_params)
-        @comment.user_id = current_user.id
-        if @comment.save
+        @comment = current_post.comments.new(comment_params)
+        @comment.user = current_user
+        if @comment.valid?
+            @comment.save
             flash[:success] = "You commented that post!"
-            redirect_to post_path(@post)
+            redirect_to post_path(current_post)
         else
+            p @comment.errors.full_messages
             flash[:alert] = "Check the comment form, something went horribly wrong."
             render new_comment_path
         end
@@ -27,9 +37,6 @@ private
     def comment_params
          params.require(:comment).permit(:description, :user_id, :post_id)
     end
-    def find_post
-        @post = Post.find(params[:id])
-    end 
-
+   
     
 end 
