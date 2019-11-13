@@ -9,7 +9,7 @@
 <h3> Logged in as user name <%= User.find(session[:user_id]).username %></h3>
 
     <% @user.posts.each do |post| %>
-    <p><%= image_tag(post.image_url, width:480, height:270) %></p>
+    <p><%= link_to image_tag(post.image_url, width:480, height:270), post %></p>
     <% end %>
 
 
@@ -34,6 +34,8 @@
           
         </ul>
       <% end %>
+
+    
 
 
 

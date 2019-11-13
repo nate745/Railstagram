@@ -1,20 +1,30 @@
 <h1><%= @post.title%></h1>
-<%= image_tag(@post.image_url, width:480, height:270)%><br>
+<%= link_to image_tag(@post.image_url, width:480, height:270), @post%><br>
 <% @post.tags.each do |tag|%>
 <%= link_to tag.name, tag_path(@post.tags.name)%>
+<% end %>
 
-<%= form_with model: @user do |f| %>
+
+<%= form_with url: post_comments_path(@post) do |f| %>
     New comment:
     <ul>
-      <%= f.fields_for :comments do |comments_form| %>
+      <%= f.fields_for :comment do |comments_form| %>
         <li>
           <%= comments_form.label :description %>
           <%= comments_form.text_field :description %>
-          
-        <%= comments_form.submit "Save Post" %> 
+      <% end %><br>
+
+       <%= f.submit "Save Post" %> 
 
         </li>
-      <% end %>
     </ul>
-  <% end %>
-<%end%> 
+<% end %>
+
+<% @comments.each do |comment|%><br>
+  <%= comment.description %>
+<%end%>
+
+
+
+
+
