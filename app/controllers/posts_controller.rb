@@ -10,11 +10,13 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(post_params)
+        @post = current_user.posts.new(post_params)
         if @post.valid?
             @post.save
-            redirect_to user_posts_path
+            redirect_to @post
         else
+            p @post.errors.full_messages
+
             redirect_to new_post_path
         end
     end
@@ -47,6 +49,5 @@ class PostsController < ApplicationController
     def find_post
         @post = Post.find(params[:id])
     end
-
 
 end
