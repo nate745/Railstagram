@@ -8,10 +8,6 @@
 
 <h3> You're login in as user name <%= User.find(session[:user_id]).username %></h3>
 
-    <% @user.posts.each do |post| %>
-    <p><%= link_to "#{post.title}", user_post_path(@user, post) %>: <%= post.content %></p>
-    <p><%= image_tag post.photo.url %></p>
-    <% end %>
 
 <%= link_to "New post", new_user_post_path(@user) %>
 <%= link_to "Log in!", login_path %>

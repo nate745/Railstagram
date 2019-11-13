@@ -13,7 +13,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         if @post.valid?
             @post.save
-            redirect_to @post
+            redirect_to user_posts_path
         else
             redirect_to new_post_path
         end

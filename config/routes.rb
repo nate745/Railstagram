@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
   resources :sessions, :only => [:create, :new, :destroy]
   resources :tags, :only => [:create, :destroy]
+  resources :comments
+  resources :posts
+  
 
 
   # root 'static_pages#index'
