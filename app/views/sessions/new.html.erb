@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<%= form_with url: "/sessions" do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email  %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Log in" %>
+
+  <%= link_to(controller: 'users', action: 'new') { 'Sign Up'} %>
+<% end %>

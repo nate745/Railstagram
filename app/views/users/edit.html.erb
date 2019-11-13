@@ -1,0 +1,24 @@
+<h1>Edit to user page </h1>
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+    <p><%= error %></p>
+    <% end %>
+    <% end %>
+
+<%= form_for(@user) do |f| %>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %>
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username %>
+    <%= f.label :password, "Change password" %>
+    <%= f.password_field :password %>
+    <%= f.label :verify_password, "Verify password" %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Submit changes" %>
+    <% end %>
+
+    <%= form_with model: @user, method: "delete" do |f| %>
+        <%= f.submit "Delete user" %>
+        <% end %>
+
