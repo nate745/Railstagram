@@ -1,1 +1,6 @@
-<h1>#Tags</h1>
+<h1><%= @tag.name %></h1>
+
+
+<% @tag.posts.each do |tag_post| %>
+    <%= link_to image_tag(tag_post.image_url, width:480, height:270), tag_post %>
+<% end %>
