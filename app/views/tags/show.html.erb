@@ -4,3 +4,6 @@
 <% @tag.posts.each do |tag_post| %>
     <%= link_to image_tag(tag_post.image_url, width:320, height:320), tag_post %>
 <% end %>
+
+
+<%= button_to "Delete Tag", @tag, method: :delete%>

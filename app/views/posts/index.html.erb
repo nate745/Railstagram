@@ -1,4 +1,13 @@
 <h1>All Posts</h1>
-<% @posts.each do |post| %><br>
-<%= link_to image_tag(post.image_url, width:320, height:320), post %>
-<%end%>     
+
+<%= form_with url: '/posts/search' do |f| %>
+    <%= f.label :q, "Search"%>
+    <%= f.text_field :q %>
+    <%= f.submit "Submit" %>
+    <% end %>
+ <% @posts.each do |post|%>
+    <p><%= post.title%></p>
+    <%= link_to image_tag(post.image_url, width:320, height:320),post %>
+ <% end %>
+<br>
+ <%= button_to "Back", user_path(current_user), method: :get %><br>

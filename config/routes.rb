@@ -6,11 +6,18 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
   end
+  
   resources :sessions, :only => [:create, :new, :destroy]
-  resources :tags, :only => [:index,:show ,:create, :destroy]
+
+  post 'posts/search', to: 'posts#search'
+
+  resources :tags
+
   resources :posts do
     resources :comments
   end
+
+  resources :comments
 
   # root 'static_pages#index'
 

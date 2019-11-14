@@ -8,4 +8,14 @@ class Post < ApplicationRecord
 
     validates :title, presence:true
     validates :image_url, presence:true
+
+    def self.search_by_tags(params)
+        @tags = Tag.select{|tag| tag.name.downcase.include?(params.downcase)}
+        @post = @tags.map do |tag|
+            tag.posts
+        end.flatten
+    end
+
+
+
 end

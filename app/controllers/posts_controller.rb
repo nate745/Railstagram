@@ -2,7 +2,11 @@ class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy]
 
     def index
-        @posts = Post.all
+        if params[:q]
+           @posts = Post.search_by_tags(params[:q])
+        else
+            @posts = Post.all
+        end
     end
 
     def new
@@ -38,6 +42,10 @@ class PostsController < ApplicationController
     def destroy
         @post.delete
         redirect_to new_post_path
+    end
+
+    def search
+        redirect_to "/posts/?q=#{params[:q]}"
     end
 
     private

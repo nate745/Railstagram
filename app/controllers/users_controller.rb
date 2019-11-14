@@ -42,6 +42,8 @@ class UsersController < ApplicationController
     end 
 
     def show 
+
+        @comments = @user.comments
         if id_matches_current_user?(params[:id])
             @user = User.find_by(id: params[:id])
 

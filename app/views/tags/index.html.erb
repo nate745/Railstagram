@@ -2,3 +2,10 @@
 <% @tags.each do |tag| %><br>
 <%= link_to tag.name, tag_path(tag) %>
 <%end%>
+<br><br>
+
+<%= button_to "Create a tag", new_tag_path, method: :get%>
+
+<br>
+
+<%= button_to "Back", user_path(current_user), method: :get %><br>

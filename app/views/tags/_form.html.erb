@@ -1,0 +1,7 @@
+<%= form_for(@tag) do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+    <%= f.submit%>
+    <%end%>
+    <br>
+    <%= button_to "Back", user_path(current_user), method: :get %><br>

@@ -24,13 +24,8 @@
               <%= posts_form.label :image_url %>
               <%= posts_form.text_field :image_url %>
 
-              <%= posts_form.collection_select(:tag_ids, Tag.all, :id, :name)%>
+              <%= posts_form.collection_check_boxes(:tag_ids, Tag.all, :id, :name)%>
 
-            <% end %>
-
-            <%= f.fields_for :comment do |comment_form| %>
-              <%= comment_form.label :description %>
-              <%= comment_form.text_field :description %>
             <% end %>
               
           <%= f.submit "Save Post" %> 
@@ -44,6 +39,8 @@
 <%= button_to "Explore Posts", posts_path, method: :get%>
 <br>   
 <%= button_to "Explore Tags", tags_path, method: :get%>
+<br>
+<%= button_to "My Comments", comments_path, method: :get%>
 <br>
 <%= button_to "Edit", edit_user_path, method: :get%>
 <br>
