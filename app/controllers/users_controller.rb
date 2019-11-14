@@ -44,11 +44,13 @@ class UsersController < ApplicationController
     def show 
         if id_matches_current_user?(params[:id])
             @user = User.find_by(id: params[:id])
+
             render :show
         else
             flash[:notice] = "Sorry, you are not authorized to view this page "
             redirect_to user_path(session[:user_id])
         end
+
     end   
 
     private 

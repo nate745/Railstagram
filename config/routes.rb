@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: :login
   delete '/logout', to: 'sessions#delete', as: :logout
   
-  resources :users, :only => [:create, :new, :show, :edit, :update] do
+  resources :users do
     resources :posts
   end
   resources :sessions, :only => [:create, :new, :destroy]
   resources :tags, :only => [:index,:show ,:create, :destroy]
   resources :posts do
-    resources :comments, :only => [:create, :show, :new, :index]
+    resources :comments
   end
 
   # root 'static_pages#index'

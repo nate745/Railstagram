@@ -1,35 +1,39 @@
 <h1><%= @post.title%></h1>
-<%= link_to image_tag(@post.image_url, width:480, height:270), @post%><br>
+<%= link_to image_tag(@post.image_url, width:320, height:320), @post%><br>
 <% @post.tags.each do |tag|%>
 <%= link_to tag.name, tag_path(@post.tag_ids)%>
 <% end %>
 
 
 <%= form_with url: post_comments_path(@post) do |f| %>
-    New comment:
-    <ul>
-      <%= f.fields_for :comment do |comments_form| %>
-        <li>
-          <%= comments_form.label :description %>
-          <%= comments_form.text_field :description %>
-      <% end %><br>
-
-       <%= f.submit "Save Post" %> 
-
-        </li>
-    </ul>
-<% end %>
+  New comment:
+  <ul>
+    <%= f.fields_for :comment do |comments_form| %>
+      <li>
+        <%= comments_form.label :description %>
+        <%= comments_form.text_field :description %>
+    <% end %><br><br><br>
+  <%end%>
 
 
 
 <% @post.comments.each do |comment| %>
   <div class="comment_content">
-      <p>User:<%= link_to comment.user.username, user_path(@post.user) %></p>
-      <p>Comment:<%= comment.description %></p>
-      <p>Time:<%= time_ago_in_words(comment.created_at) %></p>
+      <p><%= link_to comment.user.username, user_path(@post.user)%> --- <%=comment.description%></p>
+      <%=  %>
+      <p><%= time_ago_in_words(comment.created_at)%> ago</p>
   </div>
- <% end %>
- <%= link_to "Back", user_path(current_user) %>
+ <% end %><br>
+
+
+ <%= button_to "Back", user_path(current_user), method: :get %><br>
+
+ <%= button_to "Delete Post", @post, method: :delete %><br>
+
+
+
+
+
 
 
 
