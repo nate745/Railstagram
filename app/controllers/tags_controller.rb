@@ -1,16 +1,16 @@
 class TagsController < ApplicationController
 
     def index
-        @tags = Tag.all
+        @tags = Tag.search(params[:search])
     end
 
     def show
-        redirect_to count_tag_path
+        
     end
 
-    # private
+    private
      
-    # def tag_params
-    #     params.require(:tag).permit(:name)
-    # end
+    def tag_params
+        params.require(:tag).permit(:name, :search)
+    end
 end

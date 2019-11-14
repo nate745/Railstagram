@@ -1,24 +1,25 @@
 <h1><%= @post.title%></h1>
 <%= link_to image_tag(@post.image_url, width:480, height:270), @post%><br>
 <% @post.tags.each do |tag|%>
-<%= link_to tag.name, tag_path(@post.tags.name)%>
-
-<%= form_with model: @user do |f| %>
-    New comment:
-    <ul>
-      <%= f.fields_for :comments do |comments_form| %>
-        <li>
-          <%= comments_form.label :Comment %>
-          <%= comments_form.text_field :comment %>
-          
-        <%= f.submit "Save comment" %> 
-
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-<%end%> 
-
-<% @comments.each do |comment| %>
-  <%= comment.description %>
-  <% end %>
+<%= link_to tag.name, tag_path(@post.tag_ids)%>
+<% end %>
+<%= form_with url: post_comments_path(@post) do |f| %>
+   New comment:
+   <ul>
+     <%= f.fields_for :comment do |comments_form| %>
+       <li>
+         <%= comments_form.label :description %>
+         <%= comments_form.text_field :description %>
+     <% end %><br>
+      <%= f.submit "Save Post" %>
+       </li>
+   </ul>
+<% end %>
+<% @post.comments.each do |comment| %>
+ <div class="comment_content">
+     <p>User:<%= link_to comment.user.username, user_path(@post.user) %></p>
+     <p>Comment:<%= comment.description %></p>
+     <p>Time:<%= time_ago_in_words(comment.created_at) %></p>
+ </div>
+<% end %>
+<%= link_to "Back", user_path(current_user) %>

@@ -4,39 +4,21 @@
 
 
 
-<h1><%= @user.username %></h1>
+<h1>Welcome to Railstagram </h1>
 
 <h3> Logged in as user name <%= User.find(session[:user_id]).username %></h3>
 
     <% @user.posts.each do |post| %>
-    <p><%= link_to image_tag(post.image_url, width:480, height:270), post%></p>
+    <p><%= link_to image_tag(post.image_url, width:480, height:270), post %></p>
     <% end %>
 
+  
 
-    <%= form_with url: posts_path do |f| %>
-        New post:
-        <ul>
-          <%= f.fields_for :post do |posts_form| %>
-            <li>
-              <%= posts_form.label :title %>
-              <%= posts_form.text_field :title %>
-       
-              <%= posts_form.label :image_url %>
-              <%= posts_form.text_field :image_url %>
-
-              <%= posts_form.collection_select(:tag_ids, Tag.all, :id, :name)%>
-
-            <% end %>
-              
-          <%= f.submit "Save Post" %> 
-
-            </li>
-          
-        </ul>
-      <% end %>
-
-     
+<%= link_to "Create new post", new_post_path %>
+<br>
+<%= link_to "Edit", edit_user_path %>
+<br>
 <%= link_to "Log in!", login_path %>
-
+<br>
 <%= link_to "Log out!", logout_path, method: :delete %>
 
