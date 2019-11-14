@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
     def index
-        @tags = Tag.all
+        @tags = Tag.search(params[:search])
     end
 
     def new
@@ -9,7 +9,7 @@ class TagsController < ApplicationController
     end
 
     def show
-        @tag = Tag.find(params[:id])
+        
     end
 
     def destroy
@@ -20,6 +20,6 @@ class TagsController < ApplicationController
     private
      
     def tag_params
-        params.require(:tag).permit(:name)
+        params.require(:tag).permit(:name, :search)
     end
 end

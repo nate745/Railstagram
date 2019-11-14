@@ -1,7 +1,2 @@
-class PostTagsController < ApplicationController
-
-
-
-
-    
+class PostTagsController < ApplicationController   
 end

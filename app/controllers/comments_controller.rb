@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    include PostsHelper
 
     include PostsHelper
 

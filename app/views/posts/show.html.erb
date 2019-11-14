@@ -3,21 +3,17 @@
 <% @post.tags.each do |tag|%>
 <%= link_to tag.name, tag_path(@post.tag_ids)%>
 <% end %>
-
-
 <%= form_with url: post_comments_path(@post) do |f| %>
-    New comment:
-    <ul>
-      <%= f.fields_for :comment do |comments_form| %>
-        <li>
-          <%= comments_form.label :description %>
-          <%= comments_form.text_field :description %>
-      <% end %><br>
-
-       <%= f.submit "Save Post" %> 
-
-        </li>
-    </ul>
+   New comment:
+   <ul>
+     <%= f.fields_for :comment do |comments_form| %>
+       <li>
+         <%= comments_form.label :description %>
+         <%= comments_form.text_field :description %>
+     <% end %><br>
+      <%= f.submit "Save Post" %>
+       </li>
+   </ul>
 <% end %>
 
 
